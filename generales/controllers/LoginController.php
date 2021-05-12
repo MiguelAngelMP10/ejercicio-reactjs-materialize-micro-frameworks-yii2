@@ -28,10 +28,10 @@ class LoginController extends ActiveController
 
         if ($login) {
             $login->token = hash('sha256',  $username . time());
-            $login->save();
-            return ['username' => $login->username, 'token' => $login->token];
+            $login->save(false);             
+            return ['username' => $login->username, 'token' => $login->token];            
         } else {
-            return ['token' => null];
+            return ['token' => $login];
         }
     }
 
@@ -40,6 +40,7 @@ class LoginController extends ActiveController
         $request = Yii::$app->request;
         $token = $request->post('token');
         $token = Login::findOne(['token' => $token]);
+        return $token;
 
         if ($token) {
             return ['token' => $token->token];

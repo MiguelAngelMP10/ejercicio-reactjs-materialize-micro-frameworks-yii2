@@ -14,7 +14,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=ejercicio-reactjs-materialize-micro-frameworksyii2',
             'username' => 'root',
-            'password' => 'toor',
+            'password' => '',
             'charset' => 'utf8',
         ],
         'urlManager' => [
