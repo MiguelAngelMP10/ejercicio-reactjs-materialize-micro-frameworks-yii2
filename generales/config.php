@@ -25,6 +25,7 @@ return [
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'login'],
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'pagos'],
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'transacciones'],
             ],
         ]
     ],
