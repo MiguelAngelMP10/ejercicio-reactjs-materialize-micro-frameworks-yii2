@@ -28,8 +28,8 @@ class LoginController extends ActiveController
 
         if ($login) {
             $login->token = hash('sha256',  $username . time());
-            $login->save(false);             
-            return ['username' => $login->username, 'token' => $login->token];            
+            $login->save(false);
+            return ['username' => $login->username, 'token' => $login->token];
         } else {
             return ['token' => $login];
         }

@@ -1,6 +1,7 @@
 <?php
 return [
     'id' => 'clientes',
+    'language' => 'es',
     // the basePath of the application will be the `clientes` directory
     'basePath' => __DIR__,
     // this is where the application will find all controllers
@@ -23,6 +24,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'login'],
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'pagos'],
             ],
         ]
     ],
