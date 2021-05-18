@@ -27,6 +27,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'pagos'],
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'transacciones'],
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'suscripciones'],
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'recibos'],
             ],
         ]
     ],
