@@ -23,8 +23,8 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                    ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'usuarios'],
-                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'usuariosPagos'],
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'usuarios'],
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'usuario-pagos'],
             ],
         ]
     ],

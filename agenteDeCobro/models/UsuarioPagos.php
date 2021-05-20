@@ -30,10 +30,10 @@ class UsuarioPagos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUsuario', 'IdPago'], 'required'],
-            [['idUsuario', 'IdPago'], 'integer'],
-            [['idUsuario', 'IdPago'], 'unique', 'targetAttribute' => ['idUsuario', 'IdPago']],
-            [['IdPago'], 'exist', 'skipOnError' => true, 'targetClass' => Pagos::className(), 'targetAttribute' => ['IdPago' => 'id']],
+            [['idUsuario', 'idPago'], 'required'],
+            [['idUsuario', 'idPago'], 'integer'],
+            [['idUsuario', 'idPago'], 'unique', 'targetAttribute' => ['idUsuario', 'idPago']],
+            [['idPago'], 'exist', 'skipOnError' => true, 'targetClass' => Pagos::className(), 'targetAttribute' => ['idPago' => 'id']],
             [['idUsuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['idUsuario' => 'id']],
         ];
     }
@@ -46,7 +46,7 @@ class UsuarioPagos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'idUsuario' => 'Id Usuario',
-            'IdPago' => 'Id Pago',
+            'idPago' => 'Id Pago',
         ];
     }
 
@@ -55,18 +55,24 @@ class UsuarioPagos extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getIdPago()
+    public function getPago()
     {
-        return $this->hasOne(Pagos::className(), ['id' => 'IdPago']);
+        return $this->hasOne(Pagos::className(), ['id' => 'idPago']);
     }
 
     /**
-     * Gets query for [[IdUsuario0]].
+     * Gets query for [[usuario]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUsuario0()
+    public function getUsuario()
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'idUsuario']);
+    }
+
+
+    public function extraFields()
+    {
+        return ['usuario', 'pago'];
     }
 }

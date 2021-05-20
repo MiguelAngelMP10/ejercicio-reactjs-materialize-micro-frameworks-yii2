@@ -64,8 +64,13 @@ class Usuarios extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getIdPagos()
+    public function getPagos()
     {
-        return $this->hasMany(Pagos::className(), ['id' => 'IdPago'])->viaTable('usuario_pagos', ['idUsuario' => 'id']);
+        return $this->hasMany(Pagos::className(), ['id' => 'idPago'])->viaTable('usuario_pagos', ['idUsuario' => 'id']);
+    }
+
+    public function extraFields()
+    {
+        return ['usuarioPagos', 'pagos'];
     }
 }
