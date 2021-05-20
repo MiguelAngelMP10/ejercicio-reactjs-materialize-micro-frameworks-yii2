@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2021 a las 21:51:48
+-- Tiempo de generación: 20-05-2021 a las 22:02:07
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -39,7 +39,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `username`, `password`, `token`) VALUES
-(1, 'migue', 123, '60d64e905fb6a014a0c4ad617a00c8d92e7e3021af389e0c1520b9fa6619fea9');
+(1, 'migue', 123, 'e95503f5f8b7e63449badc6c92bd4971e9d46343dd157142085a7b72c17d9ed3');
 
 -- --------------------------------------------------------
 
@@ -64,11 +64,61 @@ CREATE TABLE `pagos` (
 INSERT INTO `pagos` (`id`, `concepto`, `fechaVencimiento`, `importe`, `interes`, `saldos`, `estatus`) VALUES
 (1, 'Inscripción', '2021-05-13', 250, 0, 0, 'Pagado'),
 (3, 'Inscripción', '2021-05-13', 250, 0, 0, 'Pagado'),
-(4, 'Inscripción', '2021-05-13', 250, 0, 0, 'No Pagado'),
-(5, 'Inscripción', '2021-05-13', 250, 0, 0, 'No Pagado'),
-(6, 'Inscripción', '2021-05-13', 250, 0, 0, 'No Pagado'),
-(7, 'Inscripción', '2021-05-13', 250, 0, 0, 'No Pagado'),
-(8, 'Inscripción', '2021-05-13', 250, 0, 0, 'No Pagado');
+(4, 'Inscripción', '2021-05-13', 250, 0, 0, 'Pagado'),
+(5, 'Inscripción', '2021-05-13', 250, 0, 0, 'Pagado'),
+(6, 'Inscripción', '2021-05-13', 250, 0, 0, 'Pagado'),
+(7, 'Inscripción', '2021-05-13', 250, 0, 0, 'Pagado'),
+(8, 'Inscripción', '2021-05-13', 250, 0, 0, 'Pagado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recibos`
+--
+
+CREATE TABLE `recibos` (
+  `id` int(11) NOT NULL,
+  `descripcionRecibo` text NOT NULL,
+  `tipoPago` varchar(250) NOT NULL,
+  `estatus` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `recibos`
+--
+
+INSERT INTO `recibos` (`id`, `descripcionRecibo`, `tipoPago`, `estatus`) VALUES
+(3, 'Natacion aaaaa', 'efectivo', 'Pagado'),
+(4, 'Natacion aaaaa', 'efectivo', 'Pagado'),
+(5, 'Natacion aaaaa', 'efectivo', 'Pagado'),
+(6, 'Natacion aaaaa', 'efectivo', 'Pagado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `suscripciones`
+--
+
+CREATE TABLE `suscripciones` (
+  `id` int(11) NOT NULL,
+  `suscripcion` varchar(250) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `estatus` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `suscripciones`
+--
+
+INSERT INTO `suscripciones` (`id`, `suscripcion`, `fechaInicio`, `estatus`) VALUES
+(2, 'Uniforme', '2021-05-15', 'Cancelado'),
+(3, 'Voletin de ofertas', '2021-05-17', 'Cancelado'),
+(4, 'Desayunador', '2021-05-17', 'Cancelado'),
+(5, 'Desayunador', '2021-05-17', 'Cancelado'),
+(6, 'Desayunador', '2021-05-17', 'Cancelado'),
+(7, 'Natacion', '2021-05-17', 'Pagado'),
+(8, 'Natacion', '2021-05-17', 'Pagado'),
+(9, 'Natacion', '2021-05-17', 'Pagado');
 
 -- --------------------------------------------------------
 
@@ -90,6 +140,47 @@ CREATE TABLE `transacciones` (
 INSERT INTO `transacciones` (`id`, `idPago`, `monto`, `opcionPago`) VALUES
 (2, 1, '12', 'efectivo');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellidoPaterno` varchar(100) NOT NULL,
+  `apellidoMaterno` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellidoPaterno`, `apellidoMaterno`) VALUES
+(3, 'Pedro', 'Cruz ', 'Rodriguez');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_pagos`
+--
+
+CREATE TABLE `usuario_pagos` (
+  `id` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idPago` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario_pagos`
+--
+
+INSERT INTO `usuario_pagos` (`id`, `idUsuario`, `idPago`) VALUES
+(4, 3, 4),
+(5, 3, 5),
+(6, 3, 6);
+
 --
 -- Índices para tablas volcadas
 --
@@ -107,10 +198,36 @@ ALTER TABLE `pagos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `recibos`
+--
+ALTER TABLE `recibos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `suscripciones`
+--
+ALTER TABLE `suscripciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuario_pagos`
+--
+ALTER TABLE `usuario_pagos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idUsuario` (`idUsuario`,`idPago`),
+  ADD KEY `id_pago_FK` (`idPago`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -129,10 +246,45 @@ ALTER TABLE `pagos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `recibos`
+--
+ALTER TABLE `recibos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `suscripciones`
+--
+ALTER TABLE `suscripciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario_pagos`
+--
+ALTER TABLE `usuario_pagos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `usuario_pagos`
+--
+ALTER TABLE `usuario_pagos`
+  ADD CONSTRAINT `id_pago_FK` FOREIGN KEY (`IdPago`) REFERENCES `pagos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `id_usuario_FK` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
