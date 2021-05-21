@@ -24,4 +24,12 @@ class PagosController extends ActiveController
             ->all();
         return $pagos;
     }
+
+    public function actionNoPagados()
+    {
+        $pagos = Pagos::find()
+            ->where(['estatus' => "No Pagado"])
+            ->all();
+        return $pagos;
+    }
 }
