@@ -29,7 +29,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'penalizaciones'],
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'usuario-cobros'],
                 ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'conceptos-planes'],
-
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'pagos-deposito'],
                 
             ],
         ]
