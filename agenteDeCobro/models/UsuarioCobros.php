@@ -76,6 +76,6 @@ class UsuarioCobros extends \yii\db\ActiveRecord
 
     public function extraFields()
     {
-        return ['concepto', 'usuario'];
+        return ['   ', 'usuario'];
     }
 }
