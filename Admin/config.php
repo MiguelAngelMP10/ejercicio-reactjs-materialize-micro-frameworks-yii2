@@ -23,7 +23,8 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'pasarelas'],                
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'pasarelas'], 
+                ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => 'datos-generales'],                               
             ],
         ]
     ],
