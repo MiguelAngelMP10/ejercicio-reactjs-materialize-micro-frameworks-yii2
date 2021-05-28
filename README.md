@@ -4,10 +4,10 @@ Repo de  micro frameworks de Yii2
 Comando para levantar micro proyectos en local
 
 ```
-cd agenteDeCobro  
+cd generales
 vendor/bin/yii serve --docroot=./web -p 8081
 
-cd generales
+cd agenteDeCobro  
 vendor/bin/yii serve --docroot=./web -p 8082
 
 cd Admin
