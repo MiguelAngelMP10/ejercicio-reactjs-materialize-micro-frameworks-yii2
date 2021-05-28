@@ -54,4 +54,29 @@ class Pagos extends \yii\db\ActiveRecord
             'estatus' => 'Estatus',
         ];
     }
+
+    /**
+     * Gets query for [[UsuarioPagos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsuarioPagos()
+    {
+        return $this->hasMany(UsuarioPagos::className(), ['idPago' => 'id']);
+    }
+
+    /**
+     * Gets query for [[IdUsuarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsuario()
+    {
+        return $this->hasMany(Usuarios::className(), ['id' => 'idUsuario'])->viaTable('usuario_pagos', ['idPago' => 'id']);
+    }
+
+    public function extraFields()
+    {
+        return ['usuario'];
+    }
 }

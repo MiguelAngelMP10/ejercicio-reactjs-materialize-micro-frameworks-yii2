@@ -8,8 +8,8 @@ use Yii;
  * This is the model class for table "datos_generales".
  *
  * @property int $id
- * @property string $colorLetra
- * @property string $colorFondo
+ * @property string $colorPrimario
+ * @property string $colorSecundario
  * @property string $acercaDe
  * @property string $nosotros
  */
@@ -29,9 +29,9 @@ class DatosGenerales extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['colorLetra', 'colorFondo', 'acercaDe', 'nosotros'], 'required'],
+            [['colorPrimario', 'colorSecundario', 'acercaDe', 'nosotros'], 'required'],
             [['acercaDe', 'nosotros'], 'string'],
-            [['colorLetra', 'colorFondo'], 'string', 'max' => 50],
+            [['colorPrimario', 'colorSecundario'], 'string', 'max' => 50],
         ];
     }
 
@@ -42,8 +42,8 @@ class DatosGenerales extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'colorLetra' => 'Color Letra',
-            'colorFondo' => 'Color Fondo',
+            'colorPrimario' => 'Color Letra',
+            'colorSecundario' => 'Color Fondo',
             'acercaDe' => 'Acerca De',
             'nosotros' => 'Nosotros',
         ];
